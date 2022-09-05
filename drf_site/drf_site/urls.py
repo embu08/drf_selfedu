@@ -16,10 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from cats.views import BreedsAPIView
+from cats.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/breedslist/', BreedsAPIView.as_view()),
-    path('api/v1/breedslist/<int:pk>/', BreedsAPIView.as_view()),
+    path('api/v1/breedslist/', BreedsAPIList.as_view()),
+    path('api/v1/breedslist/<int:pk>/', BreedsAPIList.as_view()),
 ]

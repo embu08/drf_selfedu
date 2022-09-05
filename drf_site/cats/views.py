@@ -8,6 +8,11 @@ from .models import Breeds
 from .serializers import BreedsSerializer
 
 
+class BreedsAPIList(generics.ListCreateAPIView):
+    queryset = Breeds.objects.all()
+    serializer_class = BreedsSerializer
+
+
 class BreedsAPIView(APIView):
     def get(self, request):
         result = Breeds.objects.all().values()
@@ -44,7 +49,6 @@ class BreedsAPIView(APIView):
         instance.delete()
 
         return Response({"post": "deleted object " + str(pk)})
-
 
 # class BreedsAPIView(generics.ListAPIView):
 #     queryset = Breeds.objects.all()
