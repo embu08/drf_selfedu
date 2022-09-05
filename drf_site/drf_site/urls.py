@@ -21,5 +21,6 @@ from cats.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/breedslist/', BreedsAPIList.as_view()),
-    path('api/v1/breedslist/<int:pk>/', BreedsAPIList.as_view()),
+    path('api/v1/breedslist/<int:pk>/', BreedsAPIUpdate.as_view()),
+    path('api/v1/breedslist/<int:pk>/detail/', BreedsAPIDetailView.as_view()),
 ]
