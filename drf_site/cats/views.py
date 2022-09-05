@@ -13,12 +13,15 @@ class BreedsAPIView(APIView):
         return Response({'title': list(result)})
 
     def post(self, request):
+        serializer = BreedsSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
         post_new = Breeds.objects.create(
             title=request.data['title'],
             content=request.data['content'],
             category_id=request.data['category_id']
         )
-        return Response({'post': model_to_dict(post_new)})
+        return Response({'post': BreedsSerializer(post_new).data})
 
 
 # class BreedsAPIView(generics.ListAPIView):
