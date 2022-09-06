@@ -19,10 +19,10 @@ from django.urls import path, include
 from cats.views import *
 from rest_framework import routers
 
-router = routers.DefaultRouter()
-router.register(r'breeds', BreedsModelViewSet, basename='breeds')
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include(router.urls))
+    path('api/v1/breeds/', BreedsAPIList.as_view()),
+    path('api/v1/breeds/<int:pk>/', BreedsAPIUpdate.as_view()),
+    path('api/v1/breeds/<int:pk>/destroy/', BreedsAPIDelete.as_view()),
+    path('api-auth/', include('rest_framework.urls')),
 ]
