@@ -19,8 +19,8 @@ from django.urls import path, include
 from cats.views import *
 from rest_framework import routers
 
-router = routers.SimpleRouter()
-router.register(r'women', BreedsModelViewSet)
+router = routers.DefaultRouter()
+router.register(r'breeds', BreedsModelViewSet, basename='breeds')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
